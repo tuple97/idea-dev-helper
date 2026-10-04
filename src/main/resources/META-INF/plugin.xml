@@ -1,0 +1,33 @@
+<idea-plugin>
+    <id>com.ideahelper.devhelper</id>
+    <name>Dev Helper</name>
+    <vendor>idea-dev-helper</vendor>
+
+    <description><![CDATA[
+    <p><b>Dev Helper</b> 本地开发助手，包含两个功能：</p>
+    <ul>
+        <li><b>CodeBuddy 积分</b>：右下角状态栏显示剩余积分，悬停查看明细；右侧工具栏视图支持签到、刷新。</li>
+        <li><b>JRebel 激活服务</b>：右侧工具栏内置本地激活服务，可启停、改端口、生成并复制 UUID / 激活地址。</li>
+    </ul>
+    <p>兼容 IntelliJ IDEA 2022.1 及之后所有版本。</p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- since-build 221 = IntelliJ IDEA 2022.1；不声明 until-build 表示兼容之后所有版本 -->
+    <idea-version since-build="221"/>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- 右下角状态栏：CodeBuddy 剩余积分 -->
+        <statusBarWidgetFactory id="DevHelperCodeBuddyUsage"
+                                order="last"
+                                implementation="com.ideahelper.cb.CodeBuddyStatusBarWidgetFactory"/>
+
+        <!-- 右侧工具栏：CodeBuddy + JRebel 视图（toolWindow 图标需为 13x13） -->
+        <toolWindow id="DevHelper"
+                    anchor="right"
+                    secondary="false"
+                    icon="/icons/toolwindow.svg"
+                    factoryClass="com.ideahelper.ui.DevHelperToolWindowFactory"/>
+    </extensions>
+</idea-plugin>

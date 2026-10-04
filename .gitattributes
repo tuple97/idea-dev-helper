@@ -1,0 +1,10 @@
+# 统一换行符，避免 CI（Linux）上因 CRLF 导致 gradlew 无法执行
+* text=auto
+
+gradlew        text eol=lf
+*.sh           text eol=lf
+*.bat          text eol=crlf
+*.yml          text eol=lf
+*.yaml         text eol=lf
+*.jar          binary
+*.svg          text eol=lf
